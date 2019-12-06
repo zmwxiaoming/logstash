@@ -30,9 +30,10 @@ class LogTestUtils {
     static void deleteLogFile(String logfileName) throws IOException {
         Path path = FileSystems.getDefault()
                 .getPath(System.getProperty("user.dir"), System.getProperty("ls.logs"), logfileName);
-        pollingDelete(path, 5, TimeUnit.SECONDS);
+        Files.deleteIfExists(path);
     }
 
+    // probably to be removed after confirmation that WinOS build is back to green
     static void pollingDelete(Path path, int sleep, TimeUnit timeUnit) throws IOException {
         final int maxRetries = 5;
         int retries = 0;
