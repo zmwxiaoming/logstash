@@ -32,30 +32,4 @@ class LogTestUtils {
                 .getPath(System.getProperty("user.dir"), System.getProperty("ls.logs"), logfileName);
         Files.deleteIfExists(path);
     }
-
-    // probably to be removed after confirmation that WinOS build is back to green
-    static void pollingDelete(Path path, int sleep, TimeUnit timeUnit) throws IOException {
-        final int maxRetries = 5;
-        int retries = 0;
-        do {
-            try {
-                Files.deleteIfExists(path);
-                break;
-            } catch (FileSystemException fsex) {
-                System.out.println("FS access error while deleting, " + fsex.getReason() + " deleting: " + fsex.getOtherFile());
-            }
-
-            try {
-                Thread.sleep(timeUnit.toMillis(sleep));
-            } catch (InterruptedException e) {
-                // follows up
-                Thread.currentThread().interrupt();
-                break;
-            }
-
-            retries++;
-        } while (retries < maxRetries);
-
-        assertTrue("Exhausted 5 retries to delete the file: " + path,retries < maxRetries);
-    }
 }
