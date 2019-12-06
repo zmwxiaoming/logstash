@@ -41,6 +41,7 @@ public class PluginDeprecationLoggerTest {
 
     @After
     public void tearDown() throws IOException {
+        LogManager.shutdown();
         LogTestUtils.reloadLogConfiguration();
         LogTestUtils.deleteLogFile("logstash-deprecation.log");
     }
