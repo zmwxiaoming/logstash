@@ -1,6 +1,9 @@
 package org.logstash.log;
 
 import org.junit.*;
+
+import org.apache.logging.log4j.LogManager;
+
 import org.logstash.Event;
 import org.logstash.plugins.ConfigurationImpl;
 import org.logstash.plugins.ContextImpl;
