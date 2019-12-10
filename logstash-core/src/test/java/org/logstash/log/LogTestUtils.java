@@ -30,6 +30,15 @@ class LogTestUtils {
     static void deleteLogFile(String logfileName) throws IOException {
         Path path = FileSystems.getDefault()
                 .getPath(System.getProperty("user.dir"), System.getProperty("ls.logs"), logfileName);
-        Files.deleteIfExists(path);
+        if (Files.exists(path)) {
+            System.out.println("File: " + path + " exists");
+            Files.delete(path);
+            if (Files.exists(path)) {
+                System.out.println("Weird the file exists after deletion");
+            }
+        } else {
+            System.out.println("File: " + path + " doesn't exists");
+        }
+//        Files.deleteIfExists(path);
     }
 }
