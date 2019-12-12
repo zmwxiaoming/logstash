@@ -1,5 +1,6 @@
 package org.logstash.log;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LoggerContext;
 
 import java.io.IOException;
@@ -9,8 +10,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 class LogTestUtils {
 
@@ -57,6 +60,18 @@ class LogTestUtils {
                 System.out.println("File [" + path + "] doesn't exists");
                 return;
             }
+
+            try {
+                Stream<String> logLines = Files.lines(path);
+                String logContent = logLines.collect(Collectors.joining("\n"));
+                System.out.println("LOG CONTENT >>>");
+                System.out.printf(logContent);
+                System.out.println("LOG CONTENT >>>");
+                logLines.close();
+            } catch (IOException ioex) {
+                fail("The file should exists and must be readable");
+            }
+
             try {
                 Thread.sleep(timeUnit.toMillis(sleep));
             } catch (InterruptedException e) {
