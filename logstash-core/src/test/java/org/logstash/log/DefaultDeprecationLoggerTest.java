@@ -61,11 +61,11 @@ public class DefaultDeprecationLoggerTest {
         assertEquals(4, 2 * 2);
     }
 
-//    @Test
-//    public void onlyCreateDeprecationLogger() {
-//        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
-//        assertNotNull(deprecationLogger);
-//    }
+    @Test
+    public void onlyCreateDeprecationLogger() {
+        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
+        assertNotNull(deprecationLogger);
+    }
 //
 //    @Test
 //    public void createAndUseDeprecationLogger() throws IOException {
