@@ -1,7 +1,9 @@
 package org.logstash.log;
 
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.status.StatusLogger;
 
 import java.io.IOException;
 import java.nio.file.FileSystemException;
@@ -16,6 +18,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 class LogTestUtils {
+
+    private static final Logger LOGGER = StatusLogger.getLogger();
 
     static String loadLogFileContent(String logfileName) throws IOException {
         Path path = FileSystems.getDefault()
@@ -57,17 +61,18 @@ class LogTestUtils {
         int retries = 0;
         do {
             if (Files.notExists(path)) {
-                System.out.println("File [" + path + "] doesn't exists");
+                LOGGER.error("File [{}] doesn't exists", path);
                 return;
             }
 
             try {
                 Stream<String> logLines = Files.lines(path);
                 String logContent = logLines.collect(Collectors.joining("\n"));
-                System.out.println("LOG CONTENT >>>");
-                System.out.printf(logContent);
-                System.out.println("LOG CONTENT >>>");
                 logLines.close();
+                LOGGER.error("LOG CONTENT >>>\n {}\nLOG CONTENT >>> ", logContent);
+//                System.out.println("LOG CONTENT >>>");
+//                System.out.printf(logContent);
+//                System.out.println("LOG CONTENT >>>");
             } catch (IOException ioex) {
                 fail("The file should exists and must be readable");
             }
