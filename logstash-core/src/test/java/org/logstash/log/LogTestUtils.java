@@ -26,11 +26,9 @@ class LogTestUtils {
                 .getPath(System.getProperty("user.dir"), System.getProperty("ls.logs"), logfileName);
 
         assertTrue("Log [" + path.toString() + "] file MUST exists", Files.exists(path));
-        Stream<String> logLines = Files.lines(path);
-        String logContent = logLines.collect(Collectors.joining());
-        logLines.close();
-
-        return logContent;
+        try (Stream<String> logLines = Files.lines(path)) {
+            return logLines.collect(Collectors.joining());
+        }
     }
 
     static void reloadLogConfiguration() {
@@ -42,15 +40,6 @@ class LogTestUtils {
         Path path = FileSystems.getDefault()
                 .getPath(System.getProperty("user.dir"), System.getProperty("ls.logs"), logfileName);
         Files.deleteIfExists(path);
-//        if (Files.exists(path)) {
-//            System.out.println("File: " + path + " exists");
-//            Files.delete(path);
-//            if (Files.exists(path)) {
-//                System.out.println("Weird the file exists after deletion");
-//            }
-//        } else {
-//            System.out.println("File: " + path + " doesn't exists");
-//        }
     }
 
     // probably to be removed after confirmation that WinOS build is back to green

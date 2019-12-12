@@ -47,36 +47,36 @@ public class DefaultDeprecationLoggerTest {
 
         LogTestUtils.pollingCheckExistence("logstash-deprecation.log", 5, TimeUnit.SECONDS);
 
-        LoggerContext.getContext(false).start();
+//        LoggerContext.getContext(false).start();
         LogTestUtils.reloadLogConfiguration();
     }
 
-    @Test
-    public void emptyMockTest() {
-        assertEquals(2, 1 + 1);
-    }
-
-    @Test
-    public void emptyMockTest2() {
-        assertEquals(4, 2 * 2);
-    }
-
-    @Test
-    public void onlyCreateDeprecationLogger() {
-        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
-        assertNotNull(deprecationLogger);
-    }
-
-    @Test
-    public void createAndUseDeprecationLogger() throws IOException {
-        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
-
-        // Exercise
-        deprecationLogger.deprecated("Simple deprecation message");
-
-        String logs = LogTestUtils.loadLogFileContent("logstash-deprecation.log");
-        assertTrue("Deprecation logs MUST contains the out line", logs.matches(".*\\[deprecation\\.test.*\\].*Simple deprecation message"));
-    }
+//    @Test
+//    public void emptyMockTest() {
+//        assertEquals(2, 1 + 1);
+//    }
+//
+//    @Test
+//    public void emptyMockTest2() {
+//        assertEquals(4, 2 * 2);
+//    }
+//
+//    @Test
+//    public void onlyCreateDeprecationLogger() {
+//        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
+//        assertNotNull(deprecationLogger);
+//    }
+//
+//    @Test
+//    public void createAndUseDeprecationLogger() throws IOException {
+//        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
+//
+//        // Exercise
+//        deprecationLogger.deprecated("Simple deprecation message");
+//
+//        String logs = LogTestUtils.loadLogFileContent("logstash-deprecation.log");
+//        assertTrue("Deprecation logs MUST contains the out line", logs.matches(".*\\[deprecation\\.test.*\\].*Simple deprecation message"));
+//    }
 
 //    @Test
 //    public void testToCheckTeardownOutput() throws IOException {
@@ -89,25 +89,25 @@ public class DefaultDeprecationLoggerTest {
 //        LogTestUtils.reloadLogConfiguration();
 //    }
 //
-//    @Test
-//    public void testDeprecationLoggerWriteOut_root() throws IOException {
-//        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
-//
-//        // Exercise
-//        deprecationLogger.deprecated("Simple deprecation message");
-//
-//        String logs = LogTestUtils.loadLogFileContent("logstash-deprecation.log");
-//        assertTrue("Deprecation logs MUST contains the out line", logs.matches(".*\\[deprecation\\.test.*\\].*Simple deprecation message"));
-//    }
-//
-//    @Test
-//    public void testDeprecationLoggerWriteOut_nested() throws IOException {
-//        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("org.logstash.my_nested_logger"));
-//
-//        // Exercise
-//        deprecationLogger.deprecated("Simple deprecation message");
-//
-//        String logs = LogTestUtils.loadLogFileContent("logstash-deprecation.log");
-//        assertTrue("Deprecation logs MUST contains the out line", logs.matches(".*\\[org\\.logstash\\.deprecation\\.my_nested_logger.*\\].*Simple deprecation message"));
-//    }
+    @Test
+    public void testDeprecationLoggerWriteOut_root() throws IOException {
+        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
+
+        // Exercise
+        deprecationLogger.deprecated("Simple deprecation message");
+
+        String logs = LogTestUtils.loadLogFileContent("logstash-deprecation.log");
+        assertTrue("Deprecation logs MUST contains the out line", logs.matches(".*\\[deprecation\\.test.*\\].*Simple deprecation message"));
+    }
+
+    @Test
+    public void testDeprecationLoggerWriteOut_nested() throws IOException {
+        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("org.logstash.my_nested_logger"));
+
+        // Exercise
+        deprecationLogger.deprecated("Simple deprecation message");
+
+        String logs = LogTestUtils.loadLogFileContent("logstash-deprecation.log");
+        assertTrue("Deprecation logs MUST contains the out line", logs.matches(".*\\[org\\.logstash\\.deprecation\\.my_nested_logger.*\\].*Simple deprecation message"));
+    }
 }
