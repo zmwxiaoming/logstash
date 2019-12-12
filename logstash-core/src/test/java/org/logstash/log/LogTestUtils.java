@@ -30,15 +30,44 @@ class LogTestUtils {
     static void deleteLogFile(String logfileName) throws IOException {
         Path path = FileSystems.getDefault()
                 .getPath(System.getProperty("user.dir"), System.getProperty("ls.logs"), logfileName);
-        if (Files.exists(path)) {
-            System.out.println("File: " + path + " exists");
-            Files.delete(path);
-            if (Files.exists(path)) {
-                System.out.println("Weird the file exists after deletion");
+        Files.deleteIfExists(path);
+//        if (Files.exists(path)) {
+//            System.out.println("File: " + path + " exists");
+//            Files.delete(path);
+//            if (Files.exists(path)) {
+//                System.out.println("Weird the file exists after deletion");
+//            }
+//        } else {
+//            System.out.println("File: " + path + " doesn't exists");
+//        }
+    }
+
+    // probably to be removed after confirmation that WinOS build is back to green
+    static void pollingCheckExistence(String logfileName, int sleep, TimeUnit timeUnit) {
+        Path path = FileSystems.getDefault()
+                .getPath(System.getProperty("user.dir"), System.getProperty("ls.logs"), logfileName);
+        pollingCheckExistence(path, sleep, timeUnit);
+    }
+
+    static void pollingCheckExistence(Path path, int sleep, TimeUnit timeUnit) {
+        final int maxRetries = 5;
+        int retries = 0;
+        do {
+            if (Files.notExists(path)) {
+                System.out.println("File [" + path + "] doesn't exists");
+                return;
             }
-        } else {
-            System.out.println("File: " + path + " doesn't exists");
-        }
-//        Files.deleteIfExists(path);
+            try {
+                Thread.sleep(timeUnit.toMillis(sleep));
+            } catch (InterruptedException e) {
+                // follows up
+                Thread.currentThread().interrupt();
+                break;
+            }
+
+            retries++;
+        } while (retries < maxRetries);
+
+        assertTrue("Exhausted 5 retries to the file: " + path + " but still exists",retries < maxRetries);
     }
 }

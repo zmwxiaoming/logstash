@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.After;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
 
@@ -42,6 +43,9 @@ public class DefaultDeprecationLoggerTest {
     public void tearDown() throws IOException {
         LogManager.shutdown();
         LogTestUtils.deleteLogFile("logstash-deprecation.log");
+
+        LogTestUtils.pollingCheckExistence("logstash-deprecation.log", 5, TimeUnit.SECONDS);
+
         LogTestUtils.reloadLogConfiguration();
     }
 
