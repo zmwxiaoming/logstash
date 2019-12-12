@@ -11,8 +11,7 @@ import org.junit.After;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class DefaultDeprecationLoggerTest {
 
@@ -55,6 +54,23 @@ public class DefaultDeprecationLoggerTest {
     @Test
     public void emptyMockTest() {
         assertEquals(2, 1 + 1);
+    }
+
+    @Test
+    public void onlyCreateDeprecationLogger() {
+        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
+        assertNotNull(deprecationLogger);
+    }
+
+    @Test
+    public void createAndUseDeprecationLogger() throws IOException {
+        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
+
+        // Exercise
+        deprecationLogger.deprecated("Simple deprecation message");
+
+        String logs = LogTestUtils.loadLogFileContent("logstash-deprecation.log");
+        assertTrue("Deprecation logs MUST contains the out line", logs.matches(".*\\[deprecation\\.test.*\\].*Simple deprecation message"));
     }
 
 //    @Test
