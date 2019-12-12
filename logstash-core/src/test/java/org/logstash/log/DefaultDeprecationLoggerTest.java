@@ -1,6 +1,7 @@
 package org.logstash.log;
 
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.LoggerContext;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -46,6 +47,7 @@ public class DefaultDeprecationLoggerTest {
 
         LogTestUtils.pollingCheckExistence("logstash-deprecation.log", 5, TimeUnit.SECONDS);
 
+        LoggerContext.getContext(false).start();
         LogTestUtils.reloadLogConfiguration();
     }
 
