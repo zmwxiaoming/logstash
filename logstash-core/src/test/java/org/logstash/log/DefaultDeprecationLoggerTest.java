@@ -52,6 +52,17 @@ public class DefaultDeprecationLoggerTest {
     }
 
     @Test
+    public void testToCheckTeardownOutput() throws IOException {
+        LogManager.shutdown();
+        LogTestUtils.deleteLogFile("logstash-deprecation.log");
+
+        LogTestUtils.pollingCheckExistence("logstash-deprecation.log", 5, TimeUnit.SECONDS);
+
+        LoggerContext.getContext(false).start();
+        LogTestUtils.reloadLogConfiguration();
+    }
+
+    @Test
     public void testDeprecationLoggerWriteOut_root() throws IOException {
         final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
 
