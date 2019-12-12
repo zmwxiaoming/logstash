@@ -66,17 +66,17 @@ public class DefaultDeprecationLoggerTest {
         final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
         assertNotNull(deprecationLogger);
     }
-//
-//    @Test
-//    public void createAndUseDeprecationLogger() throws IOException {
-//        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
-//
-//        // Exercise
-//        deprecationLogger.deprecated("Simple deprecation message");
-//
-//        String logs = LogTestUtils.loadLogFileContent("logstash-deprecation.log");
-//        assertTrue("Deprecation logs MUST contains the out line", logs.matches(".*\\[deprecation\\.test.*\\].*Simple deprecation message"));
-//    }
+
+    @Test
+    public void createAndUseDeprecationLogger() throws IOException {
+        final DefaultDeprecationLogger deprecationLogger = new DefaultDeprecationLogger(LogManager.getLogger("test"));
+
+        // Exercise
+        deprecationLogger.deprecated("Simple deprecation message");
+
+        String logs = LogTestUtils.loadLogFileContent("logstash-deprecation.log");
+        assertTrue("Deprecation logs MUST contains the out line", logs.matches(".*\\[deprecation\\.test.*\\].*Simple deprecation message"));
+    }
 
 //    @Test
 //    public void testToCheckTeardownOutput() throws IOException {

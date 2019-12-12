@@ -26,7 +26,11 @@ class LogTestUtils {
                 .getPath(System.getProperty("user.dir"), System.getProperty("ls.logs"), logfileName);
 
         assertTrue("Log [" + path.toString() + "] file MUST exists", Files.exists(path));
-        return Files.lines(path).collect(Collectors.joining());
+        Stream<String> logLines = Files.lines(path);
+        String logContent = logLines.collect(Collectors.joining());
+        logLines.close();
+
+        return logContent;
     }
 
     static void reloadLogConfiguration() {
