@@ -3,6 +3,7 @@
 
 This section summarizes the changes in the following releases:
 
+* <<logstash-7-5-2,Logstash 7.5.2>>
 * <<logstash-7-5-1,Logstash 7.5.1>>
 * <<logstash-7-5-0,Logstash 7.5.0>>
 * <<logstash-7-4-2,Logstash 7.4.2>>
@@ -22,6 +23,26 @@ This section summarizes the changes in the following releases:
 * <<logstash-7-0-0-beta1,Logstash 7.0.0-beta1>>
 * <<logstash-7-0-0-alpha2,Logstash 7.0.0-alpha2>>
 * <<logstash-7-0-0-alpha1,Logstash 7.0.0-alpha1>>
+
+[[logstash-7-5-2]]
+=== Logstash 7.5.2 Release Notes
+
+---------- DELETE FROM HERE ------------
+=== Logstash Pull Requests with label v7.5.2
+
+* Fix: (move and) make get_thread_id "nil safe" https://github.com/elastic/logstash/pull/11458[#11458]
+* [7.5 clean backport of #11482] cache compiled datasets https://github.com/elastic/logstash/pull/11490[#11490]
+
+=== Logstash Commits between 7.5.1 and 7.5.2
+
+Computed with "git log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit --date=relative v7.5.2..7.5.1"
+
+=== Logstash Plugin Release Changelogs ===
+Computed from "git diff v7.5.2..7.5.1 *.release"
+Changed plugin versions:
+---------- DELETE UP TO HERE ------------
+
+==== Plugins
 
 [[logstash-7-5-1]]
 === Logstash 7.5.1 Release Notes
