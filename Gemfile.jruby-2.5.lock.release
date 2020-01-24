@@ -2,12 +2,12 @@ PATH
   remote: logstash-core-plugin-api
   specs:
     logstash-core-plugin-api (2.1.16-java)
-      logstash-core (= 7.6.0)
+      logstash-core (= 7.6.0.SNAPSHOT)
 
 PATH
   remote: logstash-core
   specs:
-    logstash-core (7.6.0-java)
+    logstash-core (7.6.0.SNAPSHOT-java)
       chronic_duration (~> 0.10)
       clamp (~> 0.6)
       concurrent-ruby (~> 1)
@@ -43,13 +43,13 @@ GEM
       multi_json
     awesome_print (1.7.0)
     aws-eventstream (1.0.3)
-    aws-sdk (2.11.429)
-      aws-sdk-resources (= 2.11.429)
-    aws-sdk-core (2.11.429)
+    aws-sdk (2.11.435)
+      aws-sdk-resources (= 2.11.435)
+    aws-sdk-core (2.11.435)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.429)
-      aws-sdk-core (= 2.11.429)
+    aws-sdk-resources (2.11.435)
+      aws-sdk-core (= 2.11.435)
     aws-sdk-v1 (1.67.0)
       json (~> 1.4)
       nokogiri (~> 1)
@@ -260,7 +260,7 @@ GEM
       logstash-core-plugin-api (>= 1.60, <= 2.99)
     logstash-filter-sleep (3.0.6)
       logstash-core-plugin-api (>= 1.60, <= 2.99)
-    logstash-filter-split (3.1.7)
+    logstash-filter-split (3.1.8)
       logstash-core-plugin-api (>= 1.60, <= 2.99)
     logstash-filter-syslog_pri (3.0.5)
       logstash-core-plugin-api (>= 1.60, <= 2.99)
@@ -288,7 +288,7 @@ GEM
       logstash-codec-plain
       logstash-core-plugin-api (~> 2.0)
       stud (>= 0.0.22)
-    logstash-input-beats (6.0.5-java)
+    logstash-input-beats (6.0.6-java)
       concurrent-ruby (~> 1.0)
       jar-dependencies (~> 0.3, >= 0.3.4)
       logstash-codec-multiline (>= 2.0.5)
@@ -319,7 +319,7 @@ GEM
       logstash-core-plugin-api (>= 1.60, <= 2.99)
       rufus-scheduler
       stud (~> 0.0.22)
-    logstash-input-file (4.1.12)
+    logstash-input-file (4.1.13)
       addressable
       logstash-codec-multiline (~> 3.0)
       logstash-codec-plain
@@ -465,7 +465,7 @@ GEM
     logstash-output-elastic_app_search (1.0.0)
       logstash-codec-plain
       logstash-core-plugin-api (~> 2.0)
-    logstash-output-elasticsearch (10.3.0-java)
+    logstash-output-elasticsearch (10.3.1-java)
       cabin (~> 0.6)
       logstash-core-plugin-api (>= 1.60, <= 2.99)
       manticore (>= 0.5.4, < 1.0.0)
@@ -745,6 +745,8 @@ DEPENDENCIES
   logstash-integration-jdbc
   logstash-integration-kafka
   logstash-integration-rabbitmq
+  logstash-mixin-aws
+  logstash-mixin-http_client
   logstash-output-cloudwatch
   logstash-output-csv
   logstash-output-elastic_app_search
@@ -765,6 +767,7 @@ DEPENDENCIES
   logstash-output-tcp
   logstash-output-udp
   logstash-output-webhdfs
+  logstash-patterns-core
   octokit (~> 4)
   paquet (~> 0.2)
   pleaserun (~> 0.0.28)
