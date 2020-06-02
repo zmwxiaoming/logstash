@@ -3,6 +3,7 @@
 
 This section summarizes the changes in the following releases:
 
+* <<logstash-6-8-10,Logstash 6.8.10>>
 * <<logstash-6-8-9,Logstash 6.8.9>>
 * <<logstash-6-8-8,Logstash 6.8.8>>
 * <<logstash-6-8-7,Logstash 6.8.7>>
@@ -40,6 +41,28 @@ This section summarizes the changes in the following releases:
 * <<logstash-6-1-2,Logstash 6.1.2>>
 * <<logstash-6-1-1,Logstash 6.1.1>>
 * <<logstash-6-1-0,Logstash 6.1.0>>
+
+[[logstash-6-8-10]]
+=== Logstash 6.8.10 Release Notes
+
+---------- DELETE FROM HERE ------------
+=== Logstash Pull Requests with label v6.8.10
+
+=== Logstash Commits between 6.8 and 6.8.9
+
+Computed with "git log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit --date=relative v6.8.9..6.8"
+
+5668ca995 - (HEAD -> 6.8, upstream/6.8) merge (3 weeks ago) <João Duarte>
+fd586e8e6 - Release notes draft for 6.8.9 (#11851) (3 weeks ago) <Logstash Machine>
+103c52076 - bump to 6.8.10 (3 weeks ago) <Joao Duarte>
+023342303 - download kafka from another mirror (3 weeks ago) <Joao Duarte>
+
+=== Logstash Plugin Release Changelogs ===
+Computed from "git diff v6.8.9..6.8 *.release"
+Changed plugin versions:
+---------- DELETE UP TO HERE ------------
+
+==== Plugins
 
 [[logstash-6-8-9]]
 === Logstash 6.8.9 Release Notes
