@@ -3,6 +3,7 @@
 
 This section summarizes the changes in the following releases:
 
+* <<logstash-7-7-1,Logstash 7.7.1>>
 * <<logstash-7-7-0,Logstash 7.7.0>>
 * <<logstash-7-6-2,Logstash 7.6.2>>
 * <<logstash-7-6-1,Logstash 7.6.1>>
@@ -27,6 +28,27 @@ This section summarizes the changes in the following releases:
 * <<logstash-7-0-0-beta1,Logstash 7.0.0-beta1>>
 * <<logstash-7-0-0-alpha2,Logstash 7.0.0-alpha2>>
 * <<logstash-7-0-0-alpha1,Logstash 7.0.0-alpha1>>
+
+[[logstash-7-7-1]]
+=== Logstash 7.7.1 Release Notes
+
+---------- DELETE FROM HERE ------------
+=== Logstash Pull Requests with label v7.7.1
+
+* [7.7 clean backport or #11737] simplify batch classes, do not compute JE empty batches, refactor RE worker loop https://github.com/elastic/logstash/pull/11747[#11747]
+* performance: share a single secret store (7.7. backport of #10794) https://github.com/elastic/logstash/pull/11772[#11772]
+* [7.7] bump elasticsearch output dependency to 10.4.2 https://github.com/elastic/logstash/pull/11832[#11832]
+
+=== Logstash Commits between 7.7.1 and 7.7.0
+
+Computed with "git log --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit --date=relative v7.7.0..7.7.1"
+
+=== Logstash Plugin Release Changelogs ===
+Computed from "git diff v7.7.0..7.7.1 *.release"
+Changed plugin versions:
+---------- DELETE UP TO HERE ------------
+
+==== Plugins
 
 [[logstash-7-7-0]]
 === Logstash 7.7.0 Release Notes
