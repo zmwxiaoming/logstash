@@ -19,6 +19,9 @@ for /f "tokens=1* delims==> " %%G IN ('subst') do (
   )
 )
 
+wmic LogicalDisk where DeviceID='A:' Get FreeSpace /value
+wmic LogicalDisk where DeviceID='C:' Get FreeSpace /value
+
 :: no existing mapping
 :: try to assign "%WORKSPACE%" to the first drive letter which works
 for %%i in (A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z) do (
