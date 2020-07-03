@@ -19,8 +19,6 @@ for /f "tokens=1* delims==> " %%G IN ('subst') do (
   )
 )
 
-wmic LogicalDisk where DeviceID='A:' Get FreeSpace /value
-wmic LogicalDisk where DeviceID='C:' Get FreeSpace /value
 
 :: no existing mapping
 :: try to assign "%WORKSPACE%" to the first drive letter which works
@@ -38,6 +36,12 @@ exit /B 1
 
 :found_drive
 echo Using drive !use_drive! for %WORKSPACE%
+
+set "manu="&for /f "skip=1 tokens=*" %%m in ("wmic LogicalDisk where DeviceID='A:' Get FreeSpace /value") do if not defined manu set "manu=%%m"
+echo %manu%
+
+set "manu="&for /f "skip=1 tokens=*" %%m in ("wmic LogicalDisk where DeviceID='C:' Get FreeSpace /value") do if not defined manu set "manu=%%m"
+echo %manu%
 
 :: change current directory to that drive
 !use_drive!
