@@ -37,10 +37,11 @@ exit /B 1
 :found_drive
 echo Using drive !use_drive! for %WORKSPACE%
 
-set "manu="&for /f "skip=1 tokens=*" %%m in ("wmic LogicalDisk where DeviceID='A:' Get FreeSpace /value") do if not defined manu set "manu=%%m"
+wmic LogicalDisk where DeviceID='A:' Get FreeSpace /value
+set "manu="&for /f "skip=1 tokens=*" %%m in ("wmic LogicalDisk where DeviceID='A:' Get FreeSpace /value")
 echo %manu%
 
-set "manu="&for /f "skip=1 tokens=*" %%m in ("wmic LogicalDisk where DeviceID='C:' Get FreeSpace /value") do if not defined manu set "manu=%%m"
+set "manu="&for /f "skip=1 tokens=*" %%m in ("wmic LogicalDisk where DeviceID='C:' Get FreeSpace /value")
 echo %manu%
 
 :: change current directory to that drive
