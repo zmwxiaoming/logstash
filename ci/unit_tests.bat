@@ -38,6 +38,7 @@ exit /B 1
 echo Using drive !use_drive! for %WORKSPACE%
 
 wmic LogicalDisk where DeviceID='A:' Get FreeSpace /value
+wmic LogicalDisk where DeviceID='C:' Get FreeSpace /value
 set "manu="&for /f "skip=1 tokens=*" %%m in ("wmic LogicalDisk where DeviceID='A:' Get FreeSpace /value")
 echo %manu%
 
